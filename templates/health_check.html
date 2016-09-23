@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+	<head>
+		<title>SUTD Health Portal</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/static/assets/css/main.css" />
+
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+
+  <body> 
+    <h2>Your BMI Calculator</h2>
+
+    <form class='bmi-form' method="POST" action="">
+    	<div class="field">
+  	    {{ form.csrf_token }}
+  	    {{ form.height.label }} 
+        {{ form.height }}
+      </div>
+      <div class="field">
+  	    {{ form.weight.label }} {{ form.weight(size=20) }}
+    	</div>
+    	<input type="submit" value="Go">
+  	</form>
+
+    <div>Your BMI: {{ form.bmi }}</div>
+    <h3>Tips to improve your health</h3>
+    {% if form.tips == 1 %}
+      <p>
+        Overweight Tips:
+          1.  Eat a high-protein breakfast. Eating a high-protein breakfast has been shown to reduce cravings and calorie intake throughout the day.
+          2.  Avoid sugary drinks and fruit juice. These are the most fattening things you can put into your body, and avoiding them can help you lose weight.
+          3.  Drink water a half hour before meals. One study showed that drinking water a half hour before meals increased weight loss by 44% over 3 months.
+          4.  Choose weight loss-friendly foods (see list). Certain foods are very useful for losing fat. 
+          5.  Eat soluble fiber. Studies show that soluble fibers may reduce fat, especially in the belly area. Fiber supplements like glucomannan can also help 
+          6.  Drink coffee or tea. If you’re a coffee or a tea drinker, then drink as much as you want as the caffeine in them can boost your metabolism by 3-11%.
+          7.  Eat mostly whole, unprocessed foods. Base most of your diet on whole foods. They are healthier, more filling and much less likely to cause overeating.
+          8.  Eat your food slowly. Fast eaters gain more weight over time. Eating slowly makes you feel more full and boosts weight-reducing hormones
+          9.  Use smaller plates. Studies show that people automatically eat less when they use smaller plates. Strange, but it works.
+          10. Get a good night’s sleep, every night. Poor sleep is one of the strongest risk factors for weight gain, so taking care of your sleep is important.
+      </p>
+    {% endif %}
+
+    {% if form.tips == 2 %}
+      <p>
+        Normal People staying healthy<br>
+        Eat properly<br>
+        The best diet is one that has a balance of nutrients measured by calorie intake.
+        U.S. Dietary Guidelines recommend that you eat more:
+        • Fruit and vegetables.
+        • Whole grains.
+        • Fat-free or low-fat milk and milk products.
+        • Lean protein.
+        Exercise
+        you need to balance your calorie expenditure.  “Calories in and calories out” is a good focus.  If you burn more calories than you consume, weight will drop.  If you eat more calories than you burn, usually you will gain weight as the body stores the excess.
+        3) Sleep
+        The average adult needs about eight hours of sleep per night.  Sleep is the great cure-all.  It is a time when your body recovers, and when your immune system is improved. 
+        Summary
+        Eat sensibly with moderate calorie intake, exercise and burn at least as many calories as you consume, sleep 7 to 9 hours per night, and live forever!  OK, not forever, but live a healthier, higher quality life.
+      </p>
+    {% endif %}
+
+  </body>
+</html>
