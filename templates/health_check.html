@@ -35,8 +35,8 @@
       <hr>
   	</form>
 
-    <h3>BMI: {{ form.bmi }}</h3>
     {% if form.tips == 3 %}
+    <h3>BMI: {{ form.bmi }}</h3>
     <h3 style="color:#8A0808">You are Overweight!</h3>  
     <hr>
       <p>
@@ -77,6 +77,7 @@
     {% endif %}
 
     {% if form.tips == 2 %}
+    <h3>BMI: {{ form.bmi }}</h3>
     <h3 style="color:#01DF01">You are healthy!</h3>  
     <hr>
       <p>
@@ -99,6 +100,7 @@
     {% endif %}
 
     {% if form.tips == 1 %}
+    <h3>BMI: {{ form.bmi }}</h3>
     <h3 style="color:#8A0808">You are Underweight!</h3>  
     <hr>
       <p>

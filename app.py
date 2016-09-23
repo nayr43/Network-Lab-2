@@ -6,8 +6,8 @@ app.config.from_object(__name__)
 app.config['SECRET_KEY'] = '7d441f27d441f27567d441f2b6176a'
 
 class BMIForm(Form):
-    height = FloatField('Height:', validators=[validators.required()])
-    weight = FloatField('Weight:', validators=[validators.required()])
+    height = FloatField('Height (metres):', validators=[validators.required()])
+    weight = FloatField('Weight (kg):', validators=[validators.required()])
     bmi = 0
     types = ''
     tips = 0
