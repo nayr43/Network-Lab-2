@@ -2332,7 +2332,7 @@
 		line-height: 1.5;
 		margin: 0 0 0.7em 0;
 		display: inline-block;
-		width: 150px;
+		width: 320px;
 		text-align: right;
 		font-size: 1.1em;
 	}
@@ -3922,3 +3922,18 @@
 			}
 
 		}
+
+		#cal{
+			margin-left: 490px;
+		}
+		#height{
+			width: 400px;
+		}
+		#weight{
+			width: 400px;
+		}
+		#calculate{
+			margin-left: 420px;
+		}
+
+
