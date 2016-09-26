@@ -1,3 +1,7 @@
+# SUTD Health Portal
+# Created by Lim Zhi Han Ryan (1000985) and Nguyen Tung Lam (1001289)
+# Template source: https://html5up.net/uploads/demos/hyperspace/
+
 from flask import Flask, render_template, flash, request
 from wtforms import Form, FloatField, SelectField, validators, SubmitField
 
@@ -29,12 +33,10 @@ def health_check():
 
 	print(form.errors)
 	if request.method == 'POST':
-		height=float(request.form['height'])
-		weight=float(request.form['weight'])
-
-		flash('Height: {}; Weight: {}'.format(height, weight))
 
 		if form.validate():
+			height=float(request.form['height'])
+			weight=float(request.form['weight'])
 			form.bmi = bmi(height, weight)
 			form.types = types[classify(form.bmi)]
 			form.tips = tips(form.bmi)
@@ -44,7 +46,7 @@ def health_check():
 	return render_template('health_check.html', form=form)
 
 def bmi(height, weight):
-	return weight/(height*height)
+	return round(weight/(height**2))
 
 def classify(bmi_score):
 	if (bmi_score < 16):
