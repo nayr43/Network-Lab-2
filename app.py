@@ -15,7 +15,6 @@ class BMIForm(Form):
 class WorkoutForm(Form):
 	workout_type = SelectField('Select your workout type:', choices = [(1, 'Cardio'), (2, 'Chest'), \
 		(3, 'Arms'), (4, 'Legs')], validators=[validators.required()])
-	wtype = 0
 
 @app.route('/')
 def index():
@@ -77,14 +76,9 @@ def workouts():
 	form = WorkoutForm(request.form)
 	print(form.errors)
 	if request.method == 'POST':
-		workout_type=request.form['workout_type']
-		if form.validate():
-			form.wtype = workout_type
-
-
-
-	if (not form.validate()):
-		flash('All the form fields are required. ')
+		form.workout_type=int(request.form['workout_type'])
+		if (not form.validate()):
+			flash('All the form fields are required. ')
 	return render_template('workouts.html', form=form)
 
 if __name__ == '__main__':
