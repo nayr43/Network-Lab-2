@@ -24,27 +24,29 @@
           {{ form.csrf_token }}
           {{ form.workout_type.label }} 
           {{ form.workout_type }}
+
         </div>
         <input type="submit" value="Search">
         <hr>
       </form>
+    {% if form.wtype == 1 %}
+      <h3>Cardio workouts</h3>
+    {% endif %}
+
+    {% if form.wtype == 2 %}
+      <h3>Chest workouts</h3>
+    {% endif %}
+
+    {% if form.wtype == 3 %}
+      <h3>Arm workouts</h3>
+    {% endif %}
+
+    {% if form.wtype == 4 %}
+      <h3>Leg workouts</h3>
+    {% endif %}
     </div>
     
-    {{ if form.workout_type == 1 }}
-      <h3>Cardio workouts</h3>
-    {{ endif }}
 
-    {{ if form.workout_type == 2 }}
-      <h3>Chest workouts</h3>
-    {{ endif }}
-
-    {{ if form.workout_type == 3 }}
-      <h3>Arm workouts</h3>
-    {{ endif }}
-
-    {{ if form.workout_type == 4 }}
-      <h3>Leg workouts</h3>
-    {{ endif }}
 
   </body>
 </html>
