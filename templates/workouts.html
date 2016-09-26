@@ -26,24 +26,28 @@
           {{ form.workout_type }}
 
         </div>
-        <input type="submit" value="Search">
+        <input type="submit" value="Search" id="search1">
         <hr>
       </form>
 
-      {% if form.workout_type == 1 %}
-        <h3>Cardio workouts</h3>
+      {% if form.workt == 1 %}
+        <h3>Back workouts</h3>
+        <a href="#" class="image"><img src="/static/images/backworkout.jpg" alt="" data-position="center center" /></a>
       {% endif %}
 
-      {% if form.workout_type == 2 %}
+      {% if form.workt == 2 %}
         <h3>Chest workouts</h3>
+        <a href="#" class="image"><img src="/static/images/chestworkout.jpg" alt="" data-position="center center" /></a>
       {% endif %}
 
-      {% if form.workout_type == 3 %}
+      {% if form.workt == 3 %}
         <h3>Arm workouts</h3>
+        <a href="#" class="image"><img src="/static/images/armworkout.jpg" alt="" data-position="center center" /></a>
       {% endif %}
 
-      {% if form.workout_type == 4 %}
+      {% if form.workt == 4 %}
         <h3>Leg workouts</h3>
+        <a href="#" class="image"><img src="/static/images/legworkout.jpg" alt="" data-position="center center" /></a>
       {% endif %}
       
     </div>
