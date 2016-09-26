@@ -16,133 +16,133 @@
 	</head>
 
   <body> 
-  <div class=container>
-  <div class=jumbotron style="background:#5e42a6 !important">
-  <section id="three" class="wrapper style1 fade-up">
     <div class=container>
-    <h2 id="heading1">Your BMI Calculator</h2>
-    <hr>
-    <form class='bmi-form' method="POST" action="">
-    	<div class="field">
-  	    {{ form.csrf_token }}
-  	    {{ form.height.label }} 
-        {{ form.height(size=20) }}
+      <div class=jumbotron style="background:#5e42a6 !important">
+        <section id="three" class="wrapper style1 fade-up">
+          <div class=container>
+            <h2 id="heading1">Your BMI Calculator</h2>
+            <hr>
+            <form class='bmi-form' method="POST" action="">
+            	<div class="field">
+          	    {{ form.csrf_token }}
+          	    {{ form.height.label }} 
+                {{ form.height(size=20) }}
+              </div>
+              <div class="field">
+          	    {{ form.weight.label }} {{ form.weight(size=20) }}
+            	</div>
+            	<input type="submit" value="Calculate" id="calculate">
+              <hr>
+          	</form>
+
+          {% if form.tips == 3 %}
+          <h3>BMI: {{ form.bmi }}</h3>
+          <h3 style="color:#8A0808">You are Overweight!</h3>  
+          <hr>
+            <p>
+              <strong>Tips on losing weight</strong>
+              <ul>
+                <li>
+                Eat a high-protein breakfast. Eating a high-protein breakfast has been shown to reduce cravings and calorie intake throughout the day.
+                </li>
+                <li>
+                Avoid sugary drinks and fruit juice. These are the most fattening things you can put into your body, and avoiding them can help you lose weight.
+                </li>
+                <li>
+                Drink water a half hour before meals. One study showed that drinking water a half hour before meals increased weight loss by 44% over 3 months.
+                </li>
+                <li>
+                Choose weight loss-friendly foods (see list). Certain foods are very useful for losing fat. 
+                </li>
+                <li>
+                Eat soluble fiber. Studies show that soluble fibers may reduce fat, especially in the belly area. Fiber supplements like glucomannan can also help
+                </li>
+                <li>
+                Drink coffee or tea. If you’re a coffee or a tea drinker, then drink as much as you want as the caffeine in them can boost your metabolism by 3-11%.
+                </li>
+                <li>
+                Eat mostly whole, unprocessed foods. Base most of your diet on whole foods. They are healthier, more filling and much less likely to cause overeating.
+                </li>
+                <li>
+                Eat your food slowly. Fast eaters gain more weight over time. Eating slowly makes you feel more full and boosts weight-reducing hormones
+                </li>
+                <li>
+                Use smaller plates. Studies show that people automatically eat less when they use smaller plates. Strange, but it works.
+                </li>
+                <li>
+                Get a good night’s sleep, every night. Poor sleep is one of the strongest risk factors for weight gain, so taking care of your sleep is important.
+                </li>
+                </ul>
+            </p>
+          {% endif %}
+
+          {% if form.tips == 2 %}
+          <h3>BMI: {{ form.bmi }}</h3>
+          <h3 style="color:#01DF01">You are healthy!</h3>  
+          <hr>
+            <p>
+              <strong>Tips on staying healthy</strong>
+              <ul>
+              <li>
+              Eat properly
+              </li>
+              <li>
+              Exercise - You need to balance your calorie expenditure.  “Calories in and calories out” is a good focus.  If you burn more calories than you consume, weight will drop.  If you eat more calories than you burn, usually you will gain weight as the body stores the excess.
+              </li>
+              <li>
+              Sleep - The average adult needs about eight hours of sleep per night.  Sleep is the great cure-all.  It is a time when your body recovers, and when your immune system is improved.
+              </li> 
+              <li>
+              Eat sensibly with moderate calorie intake, exercise and burn at least as many calories as you consume, sleep 7 to 9 hours per night, and live forever!  OK, not forever, but live a healthier, higher quality life.
+              </li>
+              </ul>
+            </p>
+          {% endif %}
+
+          {% if form.tips == 1 %}
+          <h3>BMI: {{ form.bmi }}</h3>
+          <h3 style="color:#8A0808">You are Underweight!</h3>  
+          <hr>
+            <p>
+              <strong>Tips on gaining weight</strong>
+              <ul>
+              <li>
+              Don’t drink water before meals. This can fill your stomach and make it harder to get in enough calories.
+              </li>
+              <li>
+              Eat more often. Squeeze in an additional meal or snack whenever you can, such as before bed.
+              </li>
+              <li>
+              Drink milk. Drinking whole milk to quench thirst is a simple way to get in more high-quality protein and calories.
+              </li>
+              <li>
+              Try weight gainer shakes. If you are really struggling then you can try weight gainer shakes. These are very high in protein, carbs and calories.
+              </li>
+              <li>
+              Use bigger plates. Definitely use large plates if you are trying to get in more calories, as smaller plates cause people to automatically eat less.
+              </li>
+              <li>
+              Add cream to your coffee. This is a simple way to add in more calories.
+              </li>
+              <li>
+              Take creatine. The muscle building supplement creatine monohydrate can help you gain a few pounds in muscle weight.
+              </li>
+              <li>
+              Get quality sleep. Sleeping properly is very important for muscle growth.
+              </li>
+              <li>
+              Eat your protein first and vegetables last. If you have a mix of foods on your plate, eat the calorie-dense and protein-rich foods first. Eat the vegetables last.
+              </li>
+              <li>
+              Don’t smoke. Smokers tend to weigh less than non-smokers, and quitting smoking often leads to weight gain.
+              </li>
+              </ul>
+            </p>
+          {% endif %}
+        
+        </div>
+      </section>
       </div>
-      <div class="field">
-  	    {{ form.weight.label }} {{ form.weight(size=20) }}
-    	</div>
-    	<input type="submit" value="Calculate" id="calculate">
-      <hr>
-  	</form>
-
-    {% if form.tips == 3 %}
-    <h3>BMI: {{ form.bmi }}</h3>
-    <h3 style="color:#8A0808">You are Overweight!</h3>  
-    <hr>
-      <p>
-        <strong>Tips on losing weight</strong>
-        <ul>
-          <li>
-          Eat a high-protein breakfast. Eating a high-protein breakfast has been shown to reduce cravings and calorie intake throughout the day.
-          </li>
-          <li>
-          Avoid sugary drinks and fruit juice. These are the most fattening things you can put into your body, and avoiding them can help you lose weight.
-          </li>
-          <li>
-          Drink water a half hour before meals. One study showed that drinking water a half hour before meals increased weight loss by 44% over 3 months.
-          </li>
-          <li>
-          Choose weight loss-friendly foods (see list). Certain foods are very useful for losing fat. 
-          </li>
-          <li>
-          Eat soluble fiber. Studies show that soluble fibers may reduce fat, especially in the belly area. Fiber supplements like glucomannan can also help
-          </li>
-          <li>
-          Drink coffee or tea. If you’re a coffee or a tea drinker, then drink as much as you want as the caffeine in them can boost your metabolism by 3-11%.
-          </li>
-          <li>
-          Eat mostly whole, unprocessed foods. Base most of your diet on whole foods. They are healthier, more filling and much less likely to cause overeating.
-          </li>
-          <li>
-          Eat your food slowly. Fast eaters gain more weight over time. Eating slowly makes you feel more full and boosts weight-reducing hormones
-          </li>
-          <li>
-          Use smaller plates. Studies show that people automatically eat less when they use smaller plates. Strange, but it works.
-          </li>
-          <li>
-          Get a good night’s sleep, every night. Poor sleep is one of the strongest risk factors for weight gain, so taking care of your sleep is important.
-          </li>
-          </ul>
-      </p>
-    {% endif %}
-
-    {% if form.tips == 2 %}
-    <h3>BMI: {{ form.bmi }}</h3>
-    <h3 style="color:#01DF01">You are healthy!</h3>  
-    <hr>
-      <p>
-        <strong>Tips on staying healthy</strong>
-        <ul>
-        <li>
-        Eat properly
-        </li>
-        <li>
-        Exercise - You need to balance your calorie expenditure.  “Calories in and calories out” is a good focus.  If you burn more calories than you consume, weight will drop.  If you eat more calories than you burn, usually you will gain weight as the body stores the excess.
-        </li>
-        <li>
-        Sleep - The average adult needs about eight hours of sleep per night.  Sleep is the great cure-all.  It is a time when your body recovers, and when your immune system is improved.
-        </li> 
-        <li>
-        Eat sensibly with moderate calorie intake, exercise and burn at least as many calories as you consume, sleep 7 to 9 hours per night, and live forever!  OK, not forever, but live a healthier, higher quality life.
-        </li>
-        </ul>
-      </p>
-    {% endif %}
-
-    {% if form.tips == 1 %}
-    <h3>BMI: {{ form.bmi }}</h3>
-    <h3 style="color:#8A0808">You are Underweight!</h3>  
-    <hr>
-      <p>
-        <strong>Tips on gaining weight</strong>
-        <ul>
-        <li>
-        Don’t drink water before meals. This can fill your stomach and make it harder to get in enough calories.
-        </li>
-        <li>
-        Eat more often. Squeeze in an additional meal or snack whenever you can, such as before bed.
-        </li>
-        <li>
-        Drink milk. Drinking whole milk to quench thirst is a simple way to get in more high-quality protein and calories.
-        </li>
-        <li>
-        Try weight gainer shakes. If you are really struggling then you can try weight gainer shakes. These are very high in protein, carbs and calories.
-        </li>
-        <li>
-        Use bigger plates. Definitely use large plates if you are trying to get in more calories, as smaller plates cause people to automatically eat less.
-        </li>
-        <li>
-        Add cream to your coffee. This is a simple way to add in more calories.
-        </li>
-        <li>
-        Take creatine. The muscle building supplement creatine monohydrate can help you gain a few pounds in muscle weight.
-        </li>
-        <li>
-        Get quality sleep. Sleeping properly is very important for muscle growth.
-        </li>
-        <li>
-        Eat your protein first and vegetables last. If you have a mix of foods on your plate, eat the calorie-dense and protein-rich foods first. Eat the vegetables last.
-        </li>
-        <li>
-        Don’t smoke. Smokers tend to weigh less than non-smokers, and quitting smoking often leads to weight gain.
-        </li>
-        </ul>
-      </p>
-    {% endif %}
-  
-  </div>
-  </section>
-  </div>
-  </div>
+    </div>
   </body>
 </html>

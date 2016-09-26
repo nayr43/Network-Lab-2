@@ -1,5 +1,5 @@
 from flask import Flask, render_template, flash, request
-from wtforms import Form, FloatField, TextField, TextAreaField, validators, StringField, SubmitField
+from wtforms import Form, FloatField, SelectField, validators, SubmitField
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -12,11 +12,15 @@ class BMIForm(Form):
     types = ''
     tips = 0
 
+class WorkoutForm(Form):
+	workout_type = SelectField('Select your workout type:', choices = [(1, 'Cardio'), (2, 'Chest'), \
+		(3, 'Arms'), (4, 'Legs')], validators=[validators.required()])
+
 @app.route('/')
 def index():
 	return render_template('index.html')
 
-@app.route('/BMI.html', methods=['GET', 'POST'])
+@app.route('/bmi', methods=['GET', 'POST'])
 def health_check():
 	types = {1 : 'Severe Thinness', 2 : 'Moderate thinness', 3 : 'Mild Thinness', 4 : 'Normal', \
 			5 : 'Overweight', 6 : 'Obese class I', 7 : 'Obese class II', 8 : 'Obese class III'}
@@ -26,8 +30,7 @@ def health_check():
 	if request.method == 'POST':
 		height=float(request.form['height'])
 		weight=float(request.form['weight'])
-		
-		print(type(height))
+
 		flash('Height: {}; Weight: {}'.format(height, weight))
 
 		if form.validate():
@@ -35,13 +38,8 @@ def health_check():
 			form.types = types[classify(form.bmi)]
 			form.tips = tips(form.bmi)
 
-			# flash('Your BMI is {}'.format(bmi_score))
-			# flash(types(classify(bmi_score)))
-			# flash(tips(classify(bmi_score)))
 		else:
 			flash('All the form fields are required. ')
-
-
 	return render_template('health_check.html', form=form)
 
 def bmi(height, weight):
@@ -72,6 +70,17 @@ def tips(bmi_score):
 		return 2
 	else:
 		return 3
+
+@app.route('/workouts', methods=['GET', 'POST'])
+def workouts():
+	form = WorkoutForm(request.form)
+	print(form.errors)
+	if request.method == 'POST':
+		type=request.form['workout_type']
+
+	if (not form.validate()):
+		flash('All the form fields are required. ')
+	return render_template('workouts.html', form=form)
 
 if __name__ == '__main__':
 	app.run(debug=True, host='0.0.0.0')
